@@ -1,0 +1,44 @@
+{
+    "validCheckout": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "postalCode": "12345"
+    },
+    "invalidCheckout": [
+        {
+            "firstName": "",
+            "lastName": "Doe",
+            "postalCode": "12345",
+            "expectedError": "Error: First Name is required"
+        },
+        {
+            "firstName": "John",
+            "lastName": "",
+            "postalCode": "12345",
+            "expectedError": "Error: Last Name is required"
+        },
+        {
+            "firstName": "John",
+            "lastName": "Doe",
+            "postalCode": "",
+            "expectedError": "Error: Postal Code is required"
+        }
+    ],
+    "edgeCases": {
+        "veryLongFirstName": "JohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohnJohn",
+        "specialCharFirstName": "@#$%^&*()",
+        "numericFirstName": "123456",
+        "emojiFirstName": "😀😁😂",
+        "htmlFirstName": "<script>alert('XSS')</script>",
+        "singleCharFirstName": "A",
+        "lastName": "TestUser",
+        "postalCode": "12345"
+    },
+    "securityTests": {
+        "sqlInjectionFirstName": "' OR '1'='1",
+        "xssFirstName": "<img src=x onerror=alert('XSS')>",
+        "pathTraversalPostalCode": "../../etc/passwd",
+        "lastName": "Hacker",
+        "postalCode": "99999"
+    }
+}

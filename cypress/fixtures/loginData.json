@@ -1,0 +1,74 @@
+{
+    "validUser": {
+        "username": "standard_user",
+        "password": "secret_sauce"
+    },
+    "invalidUsers": [
+        {
+            "username": "locked_out_user",
+            "password": "secret_sauce",
+            "expectedError": "Epic sadface: Sorry, this user has been locked out."
+        },
+        {
+            "username": "standard_user",
+            "password": "wrong_password",
+            "expectedError": "Epic sadface: Username and password do not match any user in this service"
+        }
+    ],
+    "validationTests": {
+        "emptyUsername": {
+            "username": "",
+            "password": "secret_sauce",
+            "expectedError": "Epic sadface: Username is required"
+        },
+        "emptyPassword": {
+            "username": "standard_user",
+            "password": "",
+            "expectedError": "Epic sadface: Password is required"
+        },
+        "bothEmpty": {
+            "username": "",
+            "password": "",
+            "expectedError": "Epic sadface: Username is required"
+        },
+        "usernameWithSpaces": {
+            "username": "  standard_user  ",
+            "password": "secret_sauce",
+            "expectedError": "Epic sadface: Username and password do not match any user in this service"
+        }
+    },
+    "securityTests": {
+        "sqlInjection": {
+            "username": "' OR '1'='1",
+            "password": "' OR '1'='1",
+            "expectedError": "Epic sadface: Username and password do not match any user in this service"
+        },
+        "xssInjection": {
+            "username": "<script>alert('XSS')</script>",
+            "password": "test123",
+            "expectedError": "Epic sadface: Username and password do not match any user in this service"
+        },
+        "veryLongUsername": {
+            "username": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "password": "secret_sauce",
+            "expectedError": "Epic sadface: Username and password do not match any user in this service"
+        },
+        "specialCharacters": {
+            "username": "user!@#$%^&*()",
+            "password": "pass!@#$%^&*()",
+            "expectedError": "Epic sadface: Username and password do not match any user in this service"
+        }
+    },
+    "edgeCases": {
+        "numericUsername": {
+            "username": "123456",
+            "password": "secret_sauce",
+            "expectedError": "Epic sadface: Username and password do not match any user in this service"
+        },
+        "emojiUsername": {
+            "username": "😀😁😂",
+            "password": "secret_sauce",
+            "expectedError": "Epic sadface: Username and password do not match any user in this service"
+        }
+    }
+}

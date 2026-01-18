@@ -1,0 +1,36 @@
+{
+  "name": "saucedemo-cypress-automation",
+  "version": "1.0.0",
+  "description": "Professional QA Automation Framework for SauceDemo using Cypress - End-to-End Testing with POM, Data-Driven Testing, Security Tests, and CI/CD Integration",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "test:chrome": "cypress run --browser chrome",
+    "test:headed": "cypress run --headed",
+    "test:auth": "cypress run --spec \"cypress/e2e/auth/**/*.cy.js\"",
+    "test:positive": "cypress run --spec \"cypress/e2e/**/positive/*.cy.js\"",
+    "test:negative": "cypress run --spec \"cypress/e2e/**/negative/*.cy.js\"",
+    "cypress:open": "cypress open",
+    "report:merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/report.json",
+    "report:generate": "marge cypress/reports/report.json -o cypress/reports/html",
+    "test:report": "npm run test && npm run report:merge && npm run report:generate"
+  },
+  "keywords": [
+    "cypress",
+    "automation",
+    "qa",
+    "testing",
+    "e2e",
+    "saucedemo",
+    "selenium",
+    "page-object-model"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^15.8.1",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.0",
+    "mochawesome-report-generator": "^6.3.2"
+  }
+}
