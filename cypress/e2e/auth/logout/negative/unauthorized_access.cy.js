@@ -4,7 +4,7 @@ import loginData from '../../../../fixtures/loginData.json';
 describe('Logout Feature - Unauthorized Access Tests', () => {
 
     it('Should redirect to login when accessing inventory without authentication', () => {
-        cy.visit('/inventory.html');
+        cy.visit('/inventory.html', { failOnStatusCode: false });
         cy.wait(2000);
 
         // Assertion: Should redirect to login page
@@ -13,7 +13,7 @@ describe('Logout Feature - Unauthorized Access Tests', () => {
     });
 
     it('Should redirect to login when accessing cart without authentication', () => {
-        cy.visit('/cart.html');
+        cy.visit('/cart.html', { failOnStatusCode: false });
         cy.wait(2000);
 
         // Assertion: Should redirect to login page
@@ -22,7 +22,7 @@ describe('Logout Feature - Unauthorized Access Tests', () => {
     });
 
     it('Should redirect to login when accessing checkout without authentication', () => {
-        cy.visit('/checkout-step-one.html');
+        cy.visit('/checkout-step-one.html', { failOnStatusCode: false });
         cy.wait(2000);
 
         // Assertion: Should redirect to login page

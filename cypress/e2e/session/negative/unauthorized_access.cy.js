@@ -10,7 +10,7 @@ describe('Session Management - Unauthorized Access Tests', () => {
         ];
 
         protectedPages.forEach((page) => {
-            cy.visit(page);
+            cy.visit(page, { failOnStatusCode: false });
             cy.wait(2000);
 
             // Assertion: Should redirect to login page
@@ -21,7 +21,7 @@ describe('Session Management - Unauthorized Access Tests', () => {
 
     it('Should not allow direct URL manipulation to skip checkout steps', () => {
         // Try to access checkout complete page directly
-        cy.visit('/checkout-complete.html');
+        cy.visit('/checkout-complete.html', { failOnStatusCode: false });
         cy.wait(2000);
 
         // Assertion: Should redirect to login

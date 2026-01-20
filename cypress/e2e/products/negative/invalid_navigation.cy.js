@@ -32,7 +32,7 @@ describe('Products Feature - Negative Cases (Invalid Navigation)', () => {
 
     it('Should display product images correctly', () => {
         // Assertion: All product images should be visible
-        cy.get('.inventory_item_img').should('have.length', 6);
+        cy.get('.inventory_item_img img').should('have.length', 6);
         cy.get('.inventory_item_img img').each(($img) => {
             cy.wrap($img).should('be.visible');
         });
